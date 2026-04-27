@@ -1,174 +1,72 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memuat Video...</title>
+    <title>Video viral</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            cursor: pointer;
+        }
 
-<style>
-body {
-    margin:0;
-    background:#000;
-    color:#fff;
-    font-family:Arial;
-    text-align:center;
-}
+        video {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            pointer-events: none; /* supaya tidak bisa diputar */
+        }
 
-/* LOADING SCREEN */
-#loading {
-    position:fixed;
-    top:0; left:0; right:0; bottom:0;
-    background:#000;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-}
+        /* Overlay gelap tipis */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
 
-.loader {
-    width:50px;
-    height:50px;
-    border:5px solid #333;
-    border-top:5px solid red;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-}
+        /* Tombol play palsu */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+        }
 
-@keyframes spin {
-    100% { transform:rotate(360deg); }
-}
-
-#main {
-    display:none;
-    padding:20px;
-    max-width:800px;
-    margin:auto;
-}
-
-.video-box {
-    position:relative;
-    cursor:pointer;
-}
-
-video {
-    width:100%;
-    border-radius:12px;
-}
-
-.play-btn {
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-size:60px;
-    background:rgba(0,0,0,0.6);
-    padding:20px;
-    border-radius:50%;
-}
-
-.progress {
-    width:100%;
-    height:6px;
-    background:#333;
-    margin-top:10px;
-}
-
-.progress-bar {
-    height:6px;
-    width:0%;
-    background:red;
-}
-
-.btn {
-    display:none;
-    margin-top:20px;
-    padding:15px 25px;
-    background:red;
-    color:#fff;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-}
-</style>
+        .play-button:after {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 20px;
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent black;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-    <div class="loader"></div>
-    <p>Memuat video, harap tunggu...</p>
-</div>
+<h2 style="text-align:center;">Video viral</h2>
 
-<!-- MAIN -->
-<div id="main">
+<a href="https://violentlinedexploit.com/bxb4h7sx?key=66f57fe6d3cfea6168654dd48084bfe5" target="_blank">
+    <div class="video-container">
+        <video>
+            <source src="video4.mp4" type="video/mp4">
+        </video>
 
-<h2>🔥 Video Ini Lagi Viral 🔥</h2>
-
-<div class="video-box" onclick="startVideo()">
-    <video id="myVideo">
-        <source src="video4.mp4" type="video/mp4">
-    </video>
-    <div class="play-btn" id="playBtn">▶</div>
-</div>
-
-<div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
-</div>
-
-<!-- Banner Adsterra -->
-<div style="margin-top:20px;">
-<script>
-atOptions = {
-    key: '26813880',
-    format: 'iframe',
-    height: 250,
-    width: 300,
-    params: {}
-};
-</script>
-<script src="//www.topcreativeformat.com/26813880/invoke.js"></script>
-</div>
-
-<a href="#" class="btn" id="btnNext" onclick="nextAd()">LANJUT NONTON</a>
-
-</div>
-
-<script>
-// loading delay
-setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("main").style.display = "block";
-}, 2500);
-
-let firstClick = false;
-
-function startVideo() {
-    let video = document.getElementById("myVideo");
-    let playBtn = document.getElementById("playBtn");
-
-    if (!firstClick) {
-        window.open("https://violentlinedexploit.com/bxb4h7sx?key=66f57fe6d3cfea6168654dd48084bfe5", "_blank");
-        firstClick = true;
-    }
-
-    video.play();
-    playBtn.style.display = "none";
-
-    video.ontimeupdate = function() {
-        let percent = (video.currentTime / video.duration) * 100;
-        document.getElementById("progressBar").style.width = percent + "%";
-
-        if (percent > 35) {
-            document.getElementById("btnNext").style.display = "inline-block";
-        }
-    };
-}
-
-function nextAd() {
-    window.open("https://violentlinedexploit.com/bxb4h7sx?key=66f57fe6d3cfea6168654dd48084bfe5", "_blank");
-}
-</script>
+        <div class="overlay"></div>
+        <div class="play-button"></div>
+    </div>
+</a>
 
 </body>
 </html>
